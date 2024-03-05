@@ -4,13 +4,12 @@ const id = params.get("id");
 
 // URL dyal l'API pour fetcher tous les produits
 const apiUrl = "https://kanap-gold.vercel.app/api/products";
-
 // Envoi de la requête l'API pour fetcher tous les produits
 fetch(apiUrl)
     .then(response => {
         // Vérification de la réponse HTTP
         if (!response.ok) {
-            throw new Error('Mreqtsh mabqawch');
+            throw new Error('Error Api response not OK');
         }
         // Convertir la réponse l JSON
         return response.json();
@@ -21,7 +20,6 @@ fetch(apiUrl)
 
         if (product) {
             console.log(product); // Afficher l'élément trouvé
-
             const itemImage = document.querySelector('.item__img')
             const ProductImage = document.createElement('img')
             ProductImage.setAttribute('alt', product.name + ' ' + 'image')
@@ -46,12 +44,12 @@ fetch(apiUrl)
             })
 
         } else {
-            console.log("Ma 3ndna walou b l ID hadak.");
+            console.log("Ma 3ndna walou b hadak l ID .");
         }
     })
     .catch(error => {
         // Gestion des erreurs
-        console.error('M3a l error f fetch:', error);
+        console.error('error f fetch:', error);
     });
 
 
@@ -66,9 +64,11 @@ function addToCart(product) {
     if (existingProductIndex !== -1) {
         // Modifier la quantité du produit existant
         cart[existingProductIndex].quantity = parseInt(cart[existingProductIndex].quantity) + parseInt(product.quantity);
+        alert(cart[existingProductIndex].name +' Quantité modifié')
     } else {
         // Ajouter le produit l panier
         cart.push(product);
+        alert(product.name +' a été ajouté au panier')
     }
 
     // Mettre à jour localStorage b l'panier nouveau
@@ -85,8 +85,8 @@ addToCartButton.addEventListener('click', function() {
     const productQuantity = document.getElementById('quantity').value;
 
     // Vérifier si les champs mabghawch ikouno khawya
-    if ( productColor.trim() === '' || productQuantity.trim() === '') {
-        alert('mla2a4chi kayn f les champs 9bal ma t3jbouh.');
+    if ( productColor.trim() === '' || productQuantity.trim() === '' || productQuantity == 0) {
+        alert('REMPLISSEZ tous les champs');
         return; // Stopper l'exécution si les champs sont khawya
     }
 
@@ -104,5 +104,5 @@ addToCartButton.addEventListener('click', function() {
 
 
 // Mettre à jour l'affichage du nombre d'articles l panier lors du chargement dyal la page
-const cart = JSON.parse(localStorage.getItem('cart')) || [];
-// updateCartItemCount(cart.length);
+// const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
