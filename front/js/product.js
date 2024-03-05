@@ -3,7 +3,7 @@ const params = new URLSearchParams(document.location.search);
 const id = params.get("id");
 
 // URL dyal l'API pour fetcher tous les produits
-const apiUrl = "http://localhost:3000/api/products";
+const apiUrl = "https://kanap-gold.vercel.app/api/products";
 
 // Envoi de la requête l'API pour fetcher tous les produits
 fetch(apiUrl)

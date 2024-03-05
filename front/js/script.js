@@ -1,4 +1,4 @@
-const UrlApi = 'http://localhost:3000/api/products'
+const UrlApi = 'https://kanap-gold.vercel.app/api/products'
 const Items = document.getElementById('items')
 
 fetch(UrlApi).then(
