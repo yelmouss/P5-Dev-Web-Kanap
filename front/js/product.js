@@ -91,7 +91,8 @@ addToCartButton.addEventListener('click', function() {
     }
 
     // Créer un objet qui représente l produit à ajouter l panier
-    const product = {
+    const productToAdd = {
+        id: id,
         name: productName,
         price: productPrice,
         color: productColor,
@@ -99,7 +100,7 @@ addToCartButton.addEventListener('click', function() {
     };
 
     // Ajouter l produit l panier
-    addToCart(product);
+    addToCart(productToAdd);
 });
 
 
